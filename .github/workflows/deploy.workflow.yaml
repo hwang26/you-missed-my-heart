@@ -2,7 +2,7 @@
 # Reference: https://www.suhanwijaya.com/posts/use-github-actions-deploy-nextjs-ssg-site
 
 name: deploy-workflow
-on
+on:
   push:
     branches:
       - main # Pushing a commit to the master branch is the event that triggers the workflow.
