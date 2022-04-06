@@ -14,17 +14,6 @@ jobs:
       - uses: actions/setup-node@v2 # The action to install Node.js in the Runner, and allow us to run npm commands.
         with:
           node-version: '16'
-      - uses: actions/cache@v2 # This action caches the node_modules folder across builds, and makes the Runner use the cache as long as package-lock.json doesn’t change.
-        with:
-        # Next.js stores its cache in the .next/cache directory. This will persist the cache across builds for faster application rebuilds. E.g., if I only updated my codebase but not the dependencies, this avoids re-bundling the dependencies.
-         path: |
-           ${{ github.workspace }}/node_modules
-           ${{ github.workspace }}/.next/cache
-         # Generate a new cache whenever packages or source files change.
-         key: ${{ runner.os }}-nextjs-${{ hashFiles('**/package-lock.json') }}-${{ hashFiles('**/*.js') }}
-         # If source files changed but packages didn't, rebuild from a prior cache. 
-         restore-keys: |
-           ${{ runner.os }}-nextjs-${{ hashFiles('**/package-lock.json') }}-
       - run: npm install
       - run: npm run build # Builds the static files
       - uses: stefanzweifel/git-auto-commit-action@v4 # This action will commit changes made in the Runner environment, and push the commit to the GitHub repo. The default commit message will be “Automated publish”.
