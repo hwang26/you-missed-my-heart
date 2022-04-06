@@ -11,6 +11,7 @@ export default function Home() {
       </Head>
 
       <main>
+        <input type="file" accept="image/*" />
       </main>
 
     </div>
