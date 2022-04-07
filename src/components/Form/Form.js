@@ -6,7 +6,7 @@ const Form = (props) => {
     // We can also style the button a bit better
     return(
         <form className={styles.formStyle} method="post" encType="multipart/form-data">
-            <label for="imageInput">Upload Image</label>
+            <label htmlFor="imageInput">Upload Image</label>
             <input id="imageInput" type="file" accept="image/*" />
             <button>Submit</button>
         </form>
